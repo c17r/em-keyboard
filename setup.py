@@ -15,19 +15,19 @@ if sys.argv[-1] == 'publish':
     sys.exit()
 
 requires = ['docopt', 'xerox']
-version = '0.0.7'
+version = '0.0.7.1'
 
 def read(f):
     return open(f, encoding='utf-8').read()
 
 setup(
-    name='em-keyboard',
+    name='em-keyboard-py3',
     version=version,
     description='The CLI Emoji Keyboard',
     long_description=read('README.rst'),
-    author='Kenneth Reitz',
-    author_email='me@kennethreitz.org',
-    url='https://github.com/kennethreitz/em',
+    author='Christian Sauer',
+    author_email='sauerc@gmail.com',
+    url='https://github.com/c1yr/em-keyboard-py3',
     packages=['em'],
     package_data={'': ['LICENSE', 'NOTICE'], 'em': ['emojis.json',]},
     include_package_data=True,
@@ -49,6 +49,7 @@ setup(
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: Implementation :: CPython',
     )
 )

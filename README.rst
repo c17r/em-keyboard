@@ -41,7 +41,7 @@ Installation
 
 At this time, **em** requires Python and pip::
 
-    $ pip install em-keyboard
+    $ pip install em-keyboard-py3
 
 That's it!
 
@@ -51,3 +51,6 @@ Have fun!
 
 ✨🍰✨
 
+Why This Repo and not the original?
+-----------------------------------
+Python 3 support has been broken for almost 2 years.  It's been fixed in the repo but for some reason a new version haven't been released for it.  This is to fill the gap; should `em` get updated this will go away.
