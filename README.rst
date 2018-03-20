@@ -51,6 +51,6 @@ Have fun!
 
 ✨🍰✨
 
-Why This Repo and not the original?
+Why This Repo and Not The Original?
 -----------------------------------
 Python 3 support has been broken for almost 2 years.  It's been fixed in the repo but for some reason a new version haven't been released for it.  This is to fill the gap; should `em` get updated this will go away.
