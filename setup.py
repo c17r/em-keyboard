@@ -15,7 +15,7 @@ if sys.argv[-1] == 'publish':
     sys.exit()
 
 requires = ['docopt', 'xerox']
-version = '0.0.7.1'
+version = '0.0.7.2'
 
 def read(f):
     return open(f, encoding='utf-8').read()
@@ -27,7 +27,7 @@ setup(
     long_description=read('README.rst'),
     author='Christian Sauer',
     author_email='sauerc@gmail.com',
-    url='https://github.com/c1yr/em-keyboard-py3',
+    url='https://github.com/c17r/em-keyboard-py3',
     packages=['em'],
     package_data={'': ['LICENSE', 'NOTICE'], 'em': ['emojis.json',]},
     include_package_data=True,
