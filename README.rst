@@ -45,12 +45,19 @@ At this time, **em** requires Python and pip::
 
 That's it!
 
-
 Have fun!
 ---------
 
 ✨🍰✨
 
+Notes
+-----
+
+Running this command will also install the Python package Xerox, which may have dependencies on your system. See the Xerox repo_ for more information.
+
+.. _repo: https://github.com/kennethreitz/xerox
+
 Why This Repo and Not The Original?
 -----------------------------------
+
 Python 3 support has been broken for almost 2 years.  It's been fixed in the repo but for some reason a new version haven't been released for it.  This is to fill the gap; should `em` get updated this will go away.
