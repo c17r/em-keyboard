@@ -36,6 +36,16 @@ Let's find some emoji, by color::
     👹  japanese_ogre
     👺  japanese_goblin
 
+Let's get a random emoji::
+
+    $ em -r
+    Chosen: books
+    Copied! 📚
+
+    $ em -r 3
+    Chosen: stars cd cloud_with_lightning_and_rain
+    Copied! 🌠 💿 ⛈
+
 Installation
 ------------
 

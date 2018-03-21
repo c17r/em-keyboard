@@ -5,6 +5,7 @@
 Usage:
   em <name>... [--no-copy]
   em -s <name>...
+  em -r [<count>] [--no-copy]
 
 Options:
   -s            Search for emoji.
@@ -17,6 +18,8 @@ Examples:
   $ em heart
 
   $ em -s food
+
+  $ em -r 3
 
 Notes:
   - If all names provided map to emojis, the resulting emojis will be
@@ -31,6 +34,7 @@ import fnmatch
 import itertools
 import json
 import os
+import random
 import sys
 from collections import defaultdict
 
@@ -41,6 +45,7 @@ EMOJI_PATH = os.path.join(os.path.dirname(__file__), 'emojis.json')
 parser = argparse.ArgumentParser(add_help=False)
 parser.add_argument('-s', dest='search')
 parser.add_argument('-h', '--help', dest='help', action='store_true')
+parser.add_argument('-r', dest='count', type=int, nargs='?', const=1)
 parser.add_argument('--no-copy', dest='nocopy', action='store_true')
 
 
@@ -102,7 +107,8 @@ def script_name():
 def usage():
     print("""Usage:
   {0} <name>... [--no-copy]
-  {0} -s <name>...""".format(script_name()))
+  {0} -s <name>...
+  {0} -r [<count>] [--no-copy]""".format(script_name()))
 
 
 def cli():
@@ -134,6 +140,11 @@ def cli():
 
     # Grab the lookup dictionary.
     lookup = parse_emojis()
+
+    # Grab some random emojis
+    if args.count:
+        names = random.sample(lookup.keys(), args.count)
+        print(u'Chosen: {}'.format(u' '.join(names)))
 
     # Search mode.
     if args.search:
