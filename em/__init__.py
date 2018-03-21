@@ -26,6 +26,7 @@ Notes:
 
 from __future__ import print_function
 
+import argparse
 import fnmatch
 import itertools
 import json
@@ -34,9 +35,13 @@ import sys
 from collections import defaultdict
 
 import xerox
-from docopt import docopt
 
 EMOJI_PATH = os.path.join(os.path.dirname(__file__), 'emojis.json')
+
+parser = argparse.ArgumentParser(add_help=False)
+parser.add_argument('-s', dest='search')
+parser.add_argument('-h', '--help', dest='help', action='store_true')
+parser.add_argument('--no-copy', dest='nocopy', action='store_true')
 
 
 def parse_emojis(filename=EMOJI_PATH):
@@ -90,21 +95,39 @@ def do_find(lookup, term):
     return [(r, translate(lookup, r)) for r in results]
 
 
+def script_name():
+    return os.path.basename(sys.argv[0])
+
+
+def usage():
+    print("""Usage:
+  {0} <name>... [--no-copy]
+  {0} -s <name>...""".format(script_name()))
+
+
 def cli():
     # CLI argument parsing.
-    arguments = docopt(__doc__)
-    names = arguments['<name>']
-    no_copy = arguments['--no-copy']
+    args, emotes = parser.parse_known_args()
+
+    if len(sys.argv) == 1:
+        usage()
+        return 0
+
+    if args.help:
+        print(__doc__)
+        return 0
 
     # Cleanup input names, to humanize things.
-    for i, name in enumerate(names):
+    names = []
+    for name in emotes:
         # Replace -/ /. with _.
-        name = name.replace('-', '_')
-        name = name.replace(' ', '_')
-        name = name.replace('.', '_')
+        if name != '-1':
+            name = name.replace('-', '_')
+            name = name.replace(' ', '_')
+            name = name.replace('.', '_')
 
         # Over-write original name.
-        names[i] = name
+        names.append(name)
 
     # Marker for if the given emoji isn't found.
     missing = False
@@ -113,10 +136,10 @@ def cli():
     lookup = parse_emojis()
 
     # Search mode.
-    if arguments['-s']:
+    if args.search:
 
         # Lookup the search term.
-        found = do_find(lookup, names[0])
+        found = do_find(lookup, args.search)
 
         # print them to the screen.
         for (n, v) in found:
@@ -127,7 +150,7 @@ def cli():
             except TypeError:
                 pass
 
-        sys.exit(0)
+        return 0
 
     # Process the results.
     results = (translate(lookup, name) for name in names)
@@ -143,7 +166,7 @@ def cli():
     results = ''.join(results)
 
     # Copy the results (and say so!) to the clipboard.
-    if not no_copy and not missing:
+    if not args.nocopy and not missing:
         xerox.copy(results)
         print(u'Copied! {}'.format(print_results))
 
@@ -151,7 +174,7 @@ def cli():
     else:
         print(print_results)
 
-    sys.exit(int(missing))
+    return int(missing)
 
 if __name__ == '__main__':
-    cli()
+    sys.exit(cli())

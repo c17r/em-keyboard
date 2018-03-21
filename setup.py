@@ -14,7 +14,7 @@ if sys.argv[-1] == 'publish':
     # os.system('python setup.py bdist_wheel upload --universal')
     sys.exit()
 
-requires = ['docopt', 'xerox']
+requires = ['xerox']
 version = '0.0.7.2'
 
 def read(f):
