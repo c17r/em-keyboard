@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "f0ad2d62c9dc09b6bb2491085524d9a17d4804d3b26ae7f3142b9e39802c3072"
+            "sha256": "2d27db47277e1b830ba9ad194b03fd7d8147c1922c7431321f43987d322b6f60"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -24,5 +24,17 @@
             "version": "==0.4.1"
         }
     },
-    "develop": {}
+    "develop": {
+        "e1839a8": {
+            "editable": true,
+            "path": "."
+        },
+        "xerox": {
+            "hashes": [
+                "sha256:1b598ed4ba017374f02e9cef983febdd19dba79a5301856fdba985c490b14325"
+            ],
+            "index": "pypi",
+            "version": "==0.4.1"
+        }
+    }
 }
