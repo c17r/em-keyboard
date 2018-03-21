@@ -104,19 +104,12 @@ def script_name():
     return os.path.basename(sys.argv[0])
 
 
-def usage():
-    print(u"""Usage:
-  {0} <name>... [--no-copy]
-  {0} -s <name>...
-  {0} -r [<count>] [--no-copy]""".format(script_name()))
-
-
 def cli():
     # CLI argument parsing.
     args, emotes = parser.parse_known_args()
 
     if len(sys.argv) == 1:
-        usage()
+        parser.print_help()
         return 0
 
     if args.help:
