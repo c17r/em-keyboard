@@ -91,7 +91,7 @@ def do_find(lookup, term):
         space[definition['category']].append(name)
         space[name].append(name)
 
-    matches = fnmatch.filter(space.keys(), '*' + term + '*')
+    matches = fnmatch.filter(space.keys(), u'*' + term + u'*')
 
     results = set()
     for match in matches:
@@ -105,7 +105,7 @@ def script_name():
 
 
 def usage():
-    print("""Usage:
+    print(u"""Usage:
   {0} <name>... [--no-copy]
   {0} -s <name>...
   {0} -r [<count>] [--no-copy]""".format(script_name()))
