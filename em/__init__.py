@@ -79,8 +79,9 @@ def do_find(lookup, term):
         for keyword in definition['keywords']:
             space[keyword].append(name)
         space[definition['category']].append(name)
+        space[name].append(name)
 
-    matches = fnmatch.filter(space.keys(), term)
+    matches = fnmatch.filter(space.keys(), '*' + term + '*')
 
     results = set()
     for match in matches:
