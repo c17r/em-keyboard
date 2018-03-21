@@ -1,0 +1,17 @@
+master
+	- Usage output changed due to switch from docopts to argparse
+
+	- New option for gettting random emojis
+
+	- Updated emoji list
+
+	- Alert to possible other installs dependencies via Xerox
+
+	- Make emojis that start with a dash (e.g. -1) work
+
+	- Improved search:
+		- Emoji name included as search space
+		- Wildcards on both sides of search terms
+
+0.0.7.2 - 2018-03-20
+	- Works with Python 3+
